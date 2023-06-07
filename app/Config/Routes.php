@@ -42,8 +42,6 @@ $routes->match(['get', 'post'], 'asisten/update', [AsistenController::class, 'up
 $routes->match(['get', 'post'], 'asisten/delete', [AsistenController::class, 'delete']);
 $routes->match(['get', 'post'], 'asisten/search', [AsistenController::class, 'search']);
 
-
-
 use App\Controllers\LoginController;
 
 $routes->get('login', 'LoginController::index');
