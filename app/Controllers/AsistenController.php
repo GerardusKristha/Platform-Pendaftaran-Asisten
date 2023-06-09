@@ -6,8 +6,16 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class AsistenController extends BaseController
 {
+    public function hasSession()
+    {
+        $session = session();
+        return $session->has('pengguna');
+    }
     public function index()
     {
+        if (!$this->hasSession()) {
+            return view('login/loginPage');
+        }
         $model = model(AsistenModel::class);
         $data =
             [
@@ -17,6 +25,9 @@ class AsistenController extends BaseController
     }
     public function simpan()
     {
+        if (!$this->hasSession()) {
+            return view('login/loginPage');
+        }
         helper('form');
 
         // Memeriksa apakah melakukan submit data atau tidak.
@@ -39,6 +50,9 @@ class AsistenController extends BaseController
 
     public function update()
     {
+        if (!$this->hasSession()) {
+            return view('login/loginPage');
+        }
         helper('form');
 
         // Memeriksa apakah melakukan submit data atau tidak.
@@ -66,6 +80,9 @@ class AsistenController extends BaseController
 
     public function delete()
     {
+        if (!$this->hasSession()) {
+            return view('login/loginPage');
+        }
         if (!$this->request->is('post')) {
             return view('/asisten/delete');
         }
@@ -82,8 +99,10 @@ class AsistenController extends BaseController
 
     public function search()
     {
-        if(!$this->request->is('post'))
-        {
+        if (!$this->hasSession()) {
+            return view('login/loginPage');
+        }
+        if (!$this->request->is('post')) {
             return view('/asisten/search');
         }
         $nim = $this->request->getPost(['key']);
@@ -91,8 +110,8 @@ class AsistenController extends BaseController
         $model = model((AsistenModel::class));
         $asisten = $model->ambil($nim['key']);
 
-        $data = ['hasil'=> $asisten];
-        return view('asisten/search',$data);
+        $data = ['hasil' => $asisten];
+        return view('asisten/search', $data);
     }
 }
 ?>
