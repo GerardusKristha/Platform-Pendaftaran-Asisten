@@ -19,7 +19,7 @@
             <h1 style="text-align: left">Cari Asisten Praktikum</h1>
         </div>
         <div class="mt-4">
-            <form action="/login/check" method="post">
+            <form action="/login/loginUser" method="post">
                 <?= csrf_field() ?>
                 <p>
                     <label for="user">User </label>

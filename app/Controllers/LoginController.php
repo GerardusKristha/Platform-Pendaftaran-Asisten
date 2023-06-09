@@ -7,7 +7,6 @@ class LoginController extends BaseController
     {
         return view('login/loginpage');
     }
-
     public function check()
     {
         $post = $this->request->getPost(['usr', 'pwd']);

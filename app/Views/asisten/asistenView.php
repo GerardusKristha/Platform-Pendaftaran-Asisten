@@ -52,6 +52,10 @@
     }
     echo '</table>';
     ?>
+    <br>
+    <form action="login/logout" method="post">
+      <button type="submit" class="btn btn-primary" value="logout" name="submit">Logout</button>
+    </form>
   </div>
 </body>
 
