@@ -5,7 +5,7 @@ class LoginController extends BaseController
 {
     public function index()
     {
-        return $this->check();
+        return view('login/loginPage');
     }
     public function check()
     {
