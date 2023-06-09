@@ -53,9 +53,10 @@
     echo '</table>';
     ?>
     <br>
-    <form action="login/logout" method="post">
+    <form action="/login/logoutAsisten" method="post">
       <button type="submit" class="btn btn-primary" value="logout" name="submit">Logout</button>
     </form>
+    <br>
   </div>
 </body>
 

@@ -45,9 +45,9 @@ $routes->match(['get', 'post'], 'asisten/search', [AsistenController::class, 'se
 use App\Controllers\LoginController;
 
 $routes->get('login', 'LoginController::index');
-$routes->match(['get', 'post'], 'login/loginUser', [LoginController::class, 'check']);
+$routes->match(['get', 'post'], 'login/loginAsisten', [LoginController::class, 'check']);
 $routes->get('login/daftarAsisten', [LoginController::class, 'home']);
-$routes->get('login/logout', [LoginController::class, 'logout']);
+$routes->get('login/logoutAsisten', [LoginController::class, 'logout']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

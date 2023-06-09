@@ -16,13 +16,13 @@
 <body>
     <div class="container">
         <div class="mt-4 p-5 text-white bg-primary rounded">
-            <h1 style="text-align: left">Cari Asisten Praktikum</h1>
+            <h1 style="text-align: left">Login Asisten Praktikum</h1>
         </div>
         <div class="mt-4">
-            <form action="/login/loginUser" method="post">
+            <form action="/login/loginAsisten" method="post">
                 <?= csrf_field() ?>
                 <p>
-                    <label for="user">User </label>
+                    <label for="user">Username </label>
                     <input type="text" name="usr" class="form-control" placeholder="Masukkan Username..">
                 </p>
                 <p>

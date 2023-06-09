@@ -5,7 +5,7 @@ class LoginController extends BaseController
 {
     public function index()
     {
-        return view('login/loginpage');
+        return $this->check();
     }
     public function check()
     {
@@ -13,7 +13,7 @@ class LoginController extends BaseController
         $model = model((LoginModel::class));
         $asisten = $model->ambil($post['usr']);
         if ($asisten == null) {
-            return view('login/loginpage', ['eror' => "Username tidak ditemukan"]);
+            return view('login/loginPage', ['eror' => "Username tidak ditemukan"]);
         }
 
         if ($post['pwd'] == $asisten['Password']) {
@@ -22,21 +22,22 @@ class LoginController extends BaseController
             $view = new AsistenController;
             return $view->index();
         } else {
-            return view('login/loginpage', ['eror' => "Password salah"]);
+            return view('login/loginPage', ['eror' => "Password salah"]);
         }
     }
     public function home()
     {
+        $post = $this->request->getPost(['usr', 'pwd']);
         $session = session();
         if ($session->has('pengguna')) {
             $item = $session->get('pengguna');
-            if ($item == 'admin') {
+            if ($item == $post['usr']) {
                 return view('asisten/asistenView');
             } else {
-                return view('login/loginpage');
+                return view('login/loginPage');
             }
         } else {
-            return view('login/loginpage');
+            return view('login/loginPage');
         }
     }
 
@@ -44,7 +45,7 @@ class LoginController extends BaseController
     {
         $session = session();
         $session->destroy();
-        return view('login/loginpage');
+        return view('login/loginPage');
     }
 }
 ?>
